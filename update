@@ -1,0 +1,8 @@
+#!/bin/bash
+cp ../vim/vimrc .
+cp -r ../vim/vim/bundle vim-bundles
+cp ../bash/bashrc .
+cp ../git/gitconfig .
+git add -A
+git commit -m "Configs update"
+git push origin master

@@ -1,0 +1,8 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Simon Solnes
+	email = simon@solnes.co
+[push]
+	default = matching
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
