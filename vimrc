@@ -34,11 +34,15 @@
 	highlight htmlBold gui=bold guifg=#baa173 ctermfg=145
 	highlight htmlItalic gui=italic guifg=#ff8700 ctermfg=231
 
-" HIGHLIGHT LABELS
-	function! HighlightAnnotations()
-		syn keyword cTodo contained HACK NOTE WIP
-	endfunction
-	autocmd Syntax * call HighlightAnnotations()
+" SYNTAX
+	" HIGHLIGHT LABELS
+		function! HighlightAnnotations()
+			syn keyword cTodo contained HACK NOTE WIP
+		endfunction
+		autocmd Syntax * call HighlightAnnotations()
+	" APPLE SCRIPT
+	au BufRead,BufNewFile *.scpt set filetype=applescript
+
 " TABS
 	nnoremap } :tabn<cr>
 	nnoremap { :tabp<cr>

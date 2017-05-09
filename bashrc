@@ -1,6 +1,6 @@
 # Command line
 
-PS1="- " 
+PS1="→ " 
 set -o vi
 alias la='ls -laFhog'
 alias ls='ls -F1A'
@@ -12,14 +12,15 @@ alias show-hidden='defaults write com.apple.finder AppleShowAllFiles YES'
 alias hide-hidden='defaults write com.apple.finder AppleShowAllFiles NO'
 
 
-# Folders
-alias des='cd ~/Desktop'
-alias pro='cd ~/Dropbox/Programming/'
-alias drop='cd ~/Dropbox/'
-alias doc='cd ~/Dropbox/Documents/'
-alias inf11='cd ~/Dropbox/Studier/INF-1101/'
-alias inf14='cd ~/Dropbox/Studier/INF-1400/'
-alias sta='cd ~/Dropbox/Studier/STA-1001/'
+# Directories
+alias ddes='cd ~/Desktop'
+alias dpro='cd ~/Dropbox/Programming/'
+alias dscr='cd ~/Dropbox/scripts'
+alias dbox='cd ~/Dropbox/'
+alias ddoc='cd ~/Dropbox/Documents/'
+alias din1='cd ~/Dropbox/Studier/INF-1101/'
+alias din4='cd ~/Dropbox/Studier/INF-1400/'
+alias dsta='cd ~/Dropbox/Studier/STA-1001/'
 
 # Programming
 alias cc='function _cc () {gcc $1 -o a}'
