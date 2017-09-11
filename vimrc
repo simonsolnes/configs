@@ -112,7 +112,6 @@
 
 		" Syntastic
 		nmap <leader>st :SyntasticToggleMode<cr>
-		nmap <leader>sc :SyntasticCheck<cr>
 
 	" Shortcuts
 	
@@ -129,12 +128,14 @@
 		" Auto curly bracket
 		inoremap ” {<CR>}<Esc>kA<CR><TAB>
 
-		" Select the text that was last edited/pasted.
-		nmap gV `[v`]
-
 		" auto print
 		nmap <leader>pc Aprintf("\n");<Esc>hhhhi
-		nmap <leader>pg Afmt.Println("")<Esc>hi
+		nmap <leader>pg Afmt.Println()<Esc>i
+		nmap <leader>pp print<Esc>i
+
+		" spell
+		nmap <leader>si :set spell<cr>
+		nmap <leader>so :set nospell<cr>
 
 		" split line
 		nnoremap<leader>k i<cr><esc>
@@ -142,10 +143,3 @@
 		" Keep selection when indenting/outdenting.
 		vnoremap > >gv
 		vnoremap < <gv 
-
-" COMMANDLINE
-
-	" write as root when sudo is forgotten
-	cnoreabbrev w!! w !sudo tee % >/dev/null
-
-" :)

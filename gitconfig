@@ -3,7 +3,25 @@
 	name = Simon Solnes
 	email = simon@solnes.co
 [push]
-	default = matching
+	default = simple
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	st = status
+[core]
+	whitespace = trailing-space,space-before-tab
+[color]
+	ui = auto
+[diff]
+	renames = copies
+[branch]
+	autosetupmerge = true
+[merge]
+	stat = true
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[difftook "vimdiff"]
+	cmd = /usr/local/bin/vim $LOCAL $REMOTE
+[help]
+	autocorrect = 1
