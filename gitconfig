@@ -7,8 +7,12 @@
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	st = status
+	branch-name = "!git rev-parse --abbrev-ref HEAD"
+    push = "!git push origin $(git branch-name)"
+    pull = "!git pull origin $(git branch-name)"
 [core]
 	whitespace = trailing-space,space-before-tab
+	excludesfile = /Users/simonsolnes/.gitignore_global
 [color]
 	ui = auto
 [diff]
@@ -25,3 +29,8 @@
 	cmd = /usr/local/bin/vim $LOCAL $REMOTE
 [help]
 	autocorrect = 1
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

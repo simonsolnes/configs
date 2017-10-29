@@ -1,16 +1,17 @@
 % !TEX encoding = UTF-8 Unicode
-\documentclass[10pt,a4paper]{article}
+\documentclass[12pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage[backend=bibtex8]{biblatex}
 \usepackage{amsmath}
+\usepackage{url}
 \usepackage{mathpazo}
 \usepackage{helvet}
 \usepackage{inconsolata}
 \usepackage[a4paper,margin=2.5cm]{geometry}
 \usepackage{parskip}
-\setlength{\parskip}{2ex plus 0.5ex minus 0.2ex}
+\setlength{\parskip}{2ex plus 0.7ex minus 0.2ex}
 \date{}
 \author{
 	Simon Solnes\\

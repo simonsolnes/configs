@@ -3,8 +3,6 @@
 " Simon Solnes
 " github.com/simonsolnes
 " simon@solnes.co
-"
-
 " OS
 	set clipboard=unnamed				" OS-wide clipboard
 	set mouse=a							" mouse integration
@@ -23,9 +21,11 @@
 	set noswapfile						" ahhh the zen
 	au BufLeave,FocusLost * silent! wa	" autosave
 	set wildmenu						" command line completion
-	set shell=/usr/local/bin/fish		" fish shell instead of bash
+	set shell=/bin/bash					" fish shell instead of bash
 	set bg=dark
 	colo desert
+	set tabpagemax=100
+	let NERDTreeMapOpenInTab='<ENTER>'
 	" Undo
 		set undofile						" use an undo file
 		set undodir=$HOME/.vim/undo			" undo file path
@@ -50,9 +50,8 @@
 		set laststatus=2					" always show status line
 		" Pierre Bourdon status line
 		set statusline=%f\ %l\|%c\ %m%=%p%%\ (%Y%R)
-	" Window tabs
-		nnoremap } :tabn<cr>
-		nnoremap { :tabp<cr>
+	highlight Pmenu ctermfg=15, ctermbg=232
+	highlight PmenuSel ctermfg=232, ctermbg=208, gui=bold
 
 " SYNTAX
 	highlight Comment ctermfg=gray
@@ -63,12 +62,12 @@
 			syn keyword cTodo contained HACK NOTE WIP
 		endfunction
 		autocmd Syntax * call HighlightAnnotations()
-
+let NERDTreeQuitOnOpen = 1
 " FILE SPECIFIC
-	" Python
-		autocmd FileType python setlocal expandtab tabstop=4 softtabstop=4
-		let g:syntastic_python_python_exec='/usr/local/bin/python3'
+	autocmd FileType python setlocal expandtab tabstop=4 softtabstop=4
+	let g:syntastic_python_python_exec='/usr/local/bin/python3'
 	" Go
+" ENVIRONMENT
 		let g:syntastic_go_checkers = ['go']
 	" Apple script
 		au BufRead,BufNewFile *.scpt set filetype=applescript
@@ -89,29 +88,45 @@
 		nn <leader>e :call JumpToDef()<cr>
 		ino <M-g> <esc>:call JumpToDef()<cr>i
 
+" PLUGINS
+" NERDTree
+let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+
 " LINE MOVING
 	" Move lines up or down with <A-{j/k}>
 	" For non-macOS use <A-{j/k}> instead of ∆/˚
-	nnoremap ∆ :m .+1<CR>==
-	nnoremap ˚ :m .-2<CR>==
-	inoremap ∆ <Esc>:m .+1<CR>==gi
-	inoremap ˚ <Esc>:m .-2<CR>==gi
-	vnoremap ∆ :m '>+1<CR>gv=gv
-	vnoremap ˚ :m '<-2<CR>gv=gv
+	nnoremap ˜ :m .+1<CR>==
+	nnoremap ´ :m .-2<CR>==
+	vnoremap ˜ :m '>+1<CR>gv=gv
+	vnoremap ´ :m '<-2<CR>gv=gv
 
 " MAPS
+
+
+
 	let mapleader = " "
 
 	" Environment
 
-		" Convert to hard tabs
-		nmap <leader>T :%s/    /\t/g<cr>
+		" Window tabs
+			nnoremap } :tabn<cr>
+			nnoremap { :tabp<cr>
 		
 		" Save
 		nmap <leader>w :w!<cr>
+		nmap <leader>q :q<cr>
 
 		" Syntastic
 		nmap <leader>st :SyntasticToggleMode<cr>
+
+		map <C-n> :NERDTreeToggle<CR>
+
+		" Splits
+		nnoremap <C-J> <C-W><C-H>
+		nnoremap <C-K> <C-W><C-L>
+		map <C-L> :noh<cr>
 
 	" Shortcuts
 	
@@ -119,8 +134,9 @@
 		nmap > >>
 		nmap < <<
 
+	" For non-macOS use <A-{j/k}> instead of ∆/˚
 		" add new line under current without insert mode with enter
-		nmap <CR> o<Esc>
+		nnoremap <cr> o<esc>
 
 		" add new line over current without insert mode with enter
 		nmap <S-Enter> O<Esc>
@@ -128,18 +144,24 @@
 		" Auto curly bracket
 		inoremap ” {<CR>}<Esc>kA<CR><TAB>
 
-		" auto print
-		nmap <leader>pc Aprintf("\n");<Esc>hhhhi
-		nmap <leader>pg Afmt.Println()<Esc>i
-		nmap <leader>pp print<Esc>i
-
 		" spell
 		nmap <leader>si :set spell<cr>
 		nmap <leader>so :set nospell<cr>
+		nmap <leader>h 1z=
 
 		" split line
-		nnoremap<leader>k i<cr><esc>
+		nnoremap K i<cr><esc>
 
 		" Keep selection when indenting/outdenting.
 		vnoremap > >gv
 		vnoremap < <gv 
+
+let key=system('keyboardlayout')
+if key == "colemak\n"
+	set langmap=dg,DG,ek,EK,fe,FE,gt,GT,il,IL,jy,JY,kn,KN,lu,LU,nj,NJ,o\\;,O:,pr,PR,rs,RS,sd,SD,tf,TF,ui,UI,yo,YO,\\;p,:P
+	nnoremap <C-s> <C-d>
+	nnoremap <C-p> <C-r>
+	nnoremap <C-l> <C-u>
+	noremap <C-w>r <C-w>s
+	set nolangremap
+endif
