@@ -12,14 +12,9 @@
 \usepackage[a4paper,margin=2.5cm]{geometry}
 \usepackage{parskip}
 \setlength{\parskip}{2ex plus 0.7ex minus 0.2ex}
+\makeatletter
+\renewcommand{\@seccntformat}[1]{}
+\makeatother
 \date{}
-\author{
-	Simon Solnes\\
-	\line(1,0){200}\\
-	\vspace{-2cm}
-}
-\title{
-	\vspace{-2cm}
-    \line(1,0){200}\\ [0.5cm]
-    \huge{$title$} \\
-}
+\author{Simon Solnes \& David Kritoffersen\\\line(1,0){200}\\\vspace{-2cm}}
+\title{\vspace{-2cm}\line(1,0){200}\\[0.5cm]\huge{$title$}\\}
