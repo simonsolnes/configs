@@ -11,10 +11,19 @@
 \usepackage{inconsolata}
 \usepackage[a4paper,margin=2.5cm]{geometry}
 \usepackage{parskip}
-\setlength{\parskip}{2ex plus 0.7ex minus 0.2ex}
+\setlength{\parskip}{1ex plus 0.7ex minus 0.2ex}
+\usepackage{titlesec}
+\titleformat*{\section}{\LARGE\bfseries\sffamily}
+\titleformat*{\subsection}{\Large\sffamily}
+\titleformat*{\subsubsection}{\large\bfseries}
+\titleformat*{\paragraph}{\large\bfseries}
+\titleformat*{\subparagraph}{\large\bfseries}
 \makeatletter
 \renewcommand{\@seccntformat}[1]{}
 \makeatother
 \date{}
-\author{Simon Solnes \& David Kritoffersen\\\line(1,0){200}\\\vspace{-2cm}}
+\author{
+	Simon Solnes \texttt{sso128}\\
+	GitHub: \texttt{simonsolnes}\\
+	\line(1,0){200}\\\vspace{-2cm}}
 \title{\vspace{-2cm}\line(1,0){200}\\[0.5cm]\huge{$title$}\\}

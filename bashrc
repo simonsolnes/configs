@@ -49,9 +49,11 @@ alias la='ls -laFhog'
 alias ls='ls -F1A'
 alias vimrc='vim ~/.vimrc'
 alias bashrc='vim ~/.bashrc; source ~/.bashrc'
-alias lock='osascript -e "tell app \"ScreenSaverEngine\" to activate"'
-alias sshserver='ssh simon@139.162.142.101'
-alias mntserver="sshfs -p 22 simon@139.162.142.101:/ ~/mount -oauto_cache,reconnect,defer_permissions,noappledouble,negative_vncache,volname=server"
+#alias lock='osascript -e "tell app \"ScreenSaverEngine\" to activate"'
+alias lock='pmset displaysleepnow'
+alias sshserver='ssh -Y simon@139.162.142.101'
+alias mntserver="sshfs -p 22 simon@139.162.142.101:/ ~/mount/ -oauto_cache,reconnect,defer_permissions,noappledouble,negative_vncache,volname=server"
+alias gerp='grep'
 
 # OS
 alias show-hidden='defaults write com.apple.finder AppleShowAllFiles YES'
