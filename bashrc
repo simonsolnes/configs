@@ -1,4 +1,9 @@
 # Command line
+export MDPDF_SCRIPT='/Users/simonsolnes/Dropbox/Programming/mdpdf/mdpdf.py'
+export WEBSERVER_DATAFOLDER='/tmp/webserver/'
+export GIT_GUD_TOKEN='fb6f1c72a689fd0a4fcb4f80b0698b0670e0406c'
+alias doc="open dash://$1"
+alias la='ls'
 
 
 function clipup {
@@ -18,6 +23,11 @@ function clipdown {
 	fi
 
 }
+function upload {
+	filename=$(echo $1 | python3 -c "import urllib.parse; print(urllib.parse.quote(input()))")
+	curl --data-binary @"$1" http://solnes.co/upload/$filename
+}
+
 
 function title {
     echo -ne "\033]0;"$*"\007"
@@ -27,10 +37,35 @@ export -f title
 function hei {
 	echo 'ʰᵉⁱ'
 }
+alias sshlab="ssh sso128@lgserv3.stud.cs.uit.no"
 alias to=". gotodir"
 function keyboardlayout {
 	osascript -e 'tell application "System Events" to tell process "SystemUIServer" to get the value of the first menu bar item of menu bar 1 whose description is "text input"'
 }
+
+
+
+
+export CLANG_FORMAT_CONFIG='{
+	ColumnLimit: 500,
+	UseTab: ForIndentation,
+	TabWidth: 1,
+	IndentWidth: 1,
+	AllowShortFunctionsOnASingleLine: false,
+	BreakBeforeBraces: Custom,
+	BraceWrapping: {
+		BeforeElse: true,
+		AfterEnum: true,
+	}
+}'
+function code-style-format() {
+	backup_pos="/tmp/clang_format_backup/$(basename $1)$(date +%Y.%m.%d-%H:%M:%S).bak"
+	mkdir -p /tmp/clang_format_backup
+	mv $1 $backup_pos
+	cat $backup_pos | clang-format -style="$CLANG_FORMAT_CONFIG" > $1
+}
+
+
 
 function pypypy {
 	echo -e "#!/usr/bin/env python3\nimport re, struct, termios, fcntl, sys, random, time, json, requests, os, subprocess\n" > ~/Dropbox/tmp.py
@@ -54,7 +89,7 @@ alias timer='~/Dropbox/programming/timer.py'
 function mdpdfplus {
 	mdpdf $1
 	open $(basename "$1" .md).pdf
-	osascript -e 'tell application "iTerm" to activate'
+	osascript -e 'tell application "Terminal" to activate'
 }
 function web {
 	echo $@ | sed 's/ /\+/' | xargs -I {} open "https://duckduckgo.com/?q={}&t=osx&ia=web"
@@ -94,3 +129,4 @@ alias speedtest='wget -O /dev/null http://speedtest.wdc01.softlayer.com/download
 
 clear
 #echo "setleds: Error reading current flags setting. Maybe you are not on the console?: ioctl KDGKBLED: Inappropriate ioctl for device"
+fish
