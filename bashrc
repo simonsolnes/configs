@@ -1,7 +1,6 @@
 # Command line
 export MDPDF_SCRIPT='/Users/simonsolnes/Dropbox/Programming/mdpdf/mdpdf.py'
 export WEBSERVER_DATAFOLDER='/tmp/webserver/'
-export GIT_GUD_TOKEN='fb6f1c72a689fd0a4fcb4f80b0698b0670e0406c'
 alias doc="open dash://$1"
 alias la='ls'
 

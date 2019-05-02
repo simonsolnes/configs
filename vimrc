@@ -22,6 +22,7 @@ set incsearch
 set tabstop=4
 set shiftwidth=4
 set autoindent
+set background=dark
 
 set foldmethod=indent
 set nofoldenable
@@ -77,12 +78,13 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 
-match Type /\v\w*_t(\s|;|,|\)|\t|\{|\}|\*|$)@=/
+"match Type /\v\w*_t(\s|;|,|\)|\t|\{|\}|\*|$)@=/
 
 let mapleader = " "
 nmap > >>
 nmap < <<
 nmap <leader>h 1z=
+nmap <leader>t :TagbarToggle<CR>
 nmap <leader>w :w<cr>
 nmap <leader>q :q<cr>
 nmap <leader>m :w<cr>:!mdpdfplus %<cr><cr>
@@ -119,3 +121,14 @@ vmap < <gv
 "set langmap=dg,DG,ek,EK,fe,FE,gt,GT,il,IL,jy,JY,kn,KN,lu,LU,nj,NJ,o\\;,O:,pr,PR,rs,RS,sd,SD,tf,TF,ui,UI,yo,YO,\\;p,:P
 "set nolangremap
 "endif
+
+nnoremap <Leader>b :<C-u>call gitblame#echo()<CR>
+let g:indent_guides_enable_on_vim_startup = 1
+
+let g:indent_guides_auto_colors = 0
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=1
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=235
+
+let g:indent_guides_start_level=1
+let g:indent_guides_guide_size=4
+
